@@ -1,0 +1,1055 @@
+  
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600&display=swap');
+
+:root {
+  /* Color */
+  --lightest: #fffdf7;
+  --brown: #a88c7b;
+  --brown-darker: #9a7c6a;
+
+  /* Width */
+  --lg: 80rem;
+  --md: 50rem;
+  --sm: 30rem;
+}
+
+/* Base */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--lightest);
+  background: var(--brown);
+  font-weight: 300;
+}
+
+body {
+  margin: 0;
+}
+
+h1, h2, h3 {
+  margin-top: 0;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: calc(1.2rem + 3vw);
+}
+
+h2 {
+  font-size: calc(1.2rem + 2vw);
+}
+
+p, li {
+  font-size: 1.1rem;
+  line-height: 1.8rem;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+}
+
+ul {
+  padding-left: 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+li {
+  margin-bottom: 0.5rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--lightest);
+}
+
+input,
+textarea {
+  font-family: inherit;
+  color: inherit;
+  padding: .2rem .5rem;
+  border: none;
+  background-color: transparent;
+  border-bottom: 1px solid;
+}
+
+input[type=submit] {
+  cursor: pointer;
+  margin-top: 2rem;
+  align-self: center;
+}
+
+/* Utils, helpers */
+.u-list-reset {
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+}
+
+/* Logo */
+.logo {
+  font-size: 2rem;
+  justify-self: end;
+  grid-area: logo;
+  position: sticky;
+  top: 0;
+  left: 0;
+}
+
+/* Button */
+.btn {
+  padding: 1rem 2rem;
+  border: 1px solid var(--lightest);
+  transition: all .2s;
+  display: inline-block;
+}
+
+.btn:hover {
+  background-color: var(--lightest);
+  color: black;
+}
+
+/* Section */
+.section {
+  padding: 6rem 0;
+  overflow-x: hidden;
+}
+
+.section--intro {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+}
+
+.section--article {
+  padding-bottom: 0;
+}
+
+.section--footer {
+  padding-bottom: 3rem;
+}
+
+/* --- OVERLAY BASE --- */
+.overlay {
+  position: relative;
+}
+
+.overlay:before {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed; /* Mantiene el efecto parallax si lo estabas usando */
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  filter: brightness(.8);
+}
+
+/* --- SECCIÓN PREPARACIÓN & CUIDADO (Horno) --- */
+.overlay--preparacion:before {
+  background-image: url("https://i.pinimg.com/736x/ab/9e/74/ab9e74f54b16321a3b472bf60bbf5750.jpg");
+  background-position: center 40%; /* Enfoca las cookies dentro del horno */
+  filter: brightness(.7); /* Oscurece un poco para asegurar buena lectura del texto blanco */
+}
+
+/* --- SECCIÓN CONTACTO (Masa con Chispas) --- */
+.overlay--contact:before {
+  background-image: url("https://i.pinimg.com/736x/ee/21/53/ee2153110b106f365b3c3c89c9259e84.jpg");
+  background-position: center;
+  filter: brightness(.65);
+}
+
+
+/* --- IMAGEN 3: CONTACTO (Masa con Chispas) --- */
+.overlay--contact:before {
+  background-image: url("https://i.pinimg.com/736x/ee/21/53/ee2153110b106f365b3c3c89c9259e84.jpg");
+  filter: brightness(.65); /* Un poco más oscuro para resaltar los botones sobre la masa */
+}
+/* Footer nav */
+.footer-nav__list {
+  display: grid;
+  padding-left: 0;
+  list-style: none;
+  gap: 1.5rem;
+  grid-template-columns: 1fr;
+}
+
+@media (min-width: 50rem) {
+  .footer-nav__list {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* Address */
+.address__list {
+  padding-left: 0;
+  list-style: none;
+  display: grid;
+  gap: 1.5rem;
+}
+
+/* Wrapper */
+.wrapper {
+  max-width: var(--lg);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.wrapper--intro {
+  margin: 12rem auto;
+  text-align: center;
+}
+
+.wrapper--footer {
+  display: grid;
+  column-gap: 1.5rem;
+  row-gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.wrapper--copyright {
+  margin-top: 4.5rem;
+  text-align: center;
+}
+
+.wrapper--nav-area {
+  display: grid;
+  width: 100%;
+  align-items: center;
+  grid-template-areas:
+  "menuButton . logo"
+  "menu menu menu";
+}
+
+@media (max-width: 49.999rem) {
+  .wrapper--nav-area {
+    grid-template-rows: auto 1fr;
+  }
+
+  .site-nav--is-open .wrapper--nav-area{
+    height: calc(100vh - 1rem);
+  }
+}
+
+@media (min-width: 30rem) {
+  .wrapper--footer {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 50rem) {
+  .wrapper--footer {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .wrapper--nav-area {
+    grid-template-areas: "menu logo";
+  }
+}
+
+/* Title */
+.title {
+  text-align: center;
+}
+
+.title--article {
+  margin-bottom: 6rem;
+  position: relative;
+}
+
+.title--article:after {
+  content: "";
+  display: block;
+  width: 5rem;
+  height: 1px;
+  background-color: var(--lightest);
+  margin: 2rem auto 0;
+}
+
+.title--intro {
+  margin-bottom: 4rem;
+}
+
+/* Article */
+.excerpt {
+  row-gap: 1.5rem;
+  grid-template-columns: 1.5rem 1fr 1.5rem;
+  grid-template-areas:
+  "image image image"
+  ". text .";
+  display: grid;
+  align-items: center;
+  margin-bottom: 6rem;
+}
+
+.excerpt--reverse {
+  justify-items: center;
+  grid-template-areas:
+  ". image ."
+  ". text .";
+}
+
+@media (min-width: 50rem) {
+  .excerpt {
+    grid-template-columns: 3rem 1fr calc(2rem + 5%) 1fr 3rem;
+    grid-template-areas:
+    "image image . text .";
+  }
+
+  .excerpt--reverse {
+    justify-items: stretch;
+    grid-template-areas:
+    ". text . image image";
+  }
+}
+
+.excerpt__image-wrapper {
+  overflow-x: hidden;
+  grid-area: image;
+  justify-self: center;
+  display: flex;
+}
+
+.excerpt__image-wrapper img {
+  max-width: 100%;
+  height: auto;
+}
+
+.excerpt__text-wrapper {
+  grid-area: text;
+  max-width: 40rem;
+  justify-self: center;
+}
+
+@media (min-width: 50rem) {
+  .excerpt__text-wrapper {
+    justify-self: flex-start;
+  }
+
+  .excerpt--reverse .excerpt__text-wrapper {
+    justify-self: flex-end;
+  }
+
+  .excerpt__image-wrapper {
+    justify-self: flex-end;
+  }
+
+  .excerpt--reverse .excerpt__image-wrapper {
+    display: flex;
+    justify-self: flex-start;
+  }
+}
+
+/* Form */
+.contact-form {
+  width: 100%;
+  max-width: var(--sm);
+}
+
+.contact-form__group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+/* Site nav */
+.site-nav {
+  position: sticky;
+  top: 0;
+  left: 0;
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+  z-index: 3;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, .2);
+  background-color: var(--brown-darker);
+}
+
+.site-nav__menu {
+  grid-area: menu;
+}
+
+.site-nav__link {
+  padding: 1rem;
+  display: block;
+}
+
+@media (max-width: 49.999rem) {
+  .site-nav {
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    width: 100%;
+  }
+
+  .site-nav__menu {
+    display: none;
+    flex-direction: column;
+    margin: auto;
+    padding-top: 1rem;
+    padding-bottom: 2rem;
+    animation-duration: .2s;
+    animation-timing-function: ease-in-out;
+  }
+
+  .site-nav__link {
+    font-size: calc(1.2rem + 3vw);
+  }
+
+  .site-nav--is-open {
+    height: 100vh;
+    overflow-y: auto;
+  }
+
+  .site-nav--is-open .site-nav__menu {
+    display: flex;
+  }
+}
+
+@media (min-width: 50rem) {
+  .site-nav__menu {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+  }
+}
+
+.fade-in {
+  animation-fill-mode: forwards;
+  animation-name: fade;
+}
+
+.fade-out {
+  animation-fill-mode: backwards;
+  animation-name: fade;
+}
+
+@keyframes fade {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+/* Curtain */
+.site-nav__curtain {
+  visibility: hidden;
+  position: fixed;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 0;
+  background: var(--brown-darker);
+  border-radius: 50%;
+  transform: translateY(100%) scale(0);
+  animation-duration: .6s;
+  animation-timing-function: ease-out;
+  animation-fill-mode: forwards;
+}
+
+.curtain-up { animation-name: curtainUp; }
+.curtain-down { animation-name: curtainDown; }
+
+@media (min-width: 50rem) {
+  .site-nav__curtain {
+    visibility: hidden;
+    transform: translateY(100%) scale(0) !important;
+  }
+}
+
+@keyframes curtainUp {
+  0% {
+    border-radius: 50%;
+    transform: translateY(100%) scale(1);
+    visibility: visible;
+    opacity: 1;
+  }
+  50% { border-radius: 50%; }
+  100% {
+    transform: translateY(0%) scale(3, 1);
+    visibility: visible;
+    opacity: 1;
+    border-radius: 0;
+  }
+}
+
+@keyframes curtainDown {
+  0% {
+    border-radius: 0;
+    transform: translateY(0%) scale(3, 1);
+    opacity: 1;
+    visibility: visible;
+  }
+  50% {
+    opacity: 1;
+    visibility: visible;
+    border-radius: 50%;
+  }
+  99% {
+    transform: translateY(100%) scale(0);
+    visibility: visible;
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100%) scale(0);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+/* Menu button */
+.menu-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: .5rem 0 .5rem 2rem;
+  color: var(--lightest);
+  position: sticky;
+  left: 0;
+  top: 0;
+  align-self: normal;
+  justify-self: start;
+  z-index: 10;
+  grid-area: menuButton;
+}
+
+.menu-button:active {
+  transform: translateY(-.2rem);
+}
+
+@media (min-width: 50rem) {
+  .menu-button {
+    display: none;
+  }
+}
+
+.menu-button__lines {
+  display: grid;
+  gap: 5px;
+  transition: all .2s ease;
+  position: absolute;
+  left: 0;
+}
+
+.menu-button__lines--open {
+  gap: 0;
+}
+
+.menu-button__line {
+  display: block;
+  transition: .2s ease;
+  content: '';
+  width: 1.2rem;
+  height: 2px;
+  background-color: var(--lightest);
+  transform-origin: center;
+}
+
+.menu-button:hover .menu-button__lines {
+  gap: 8px;
+}
+
+.menu-button__lines--open .menu-button__line {
+  grid-row-start: 1;
+  grid-column-start: 1;
+  transform: rotate(45deg) scale(1.6);
+}
+
+.menu-button__lines--open .menu-button__line:nth-child(3) {
+  transform: rotate(-45deg) scale(1.6);
+}
+/* --- SECCIÓN DE MENÚ Y GRILLA SIMÉTRICA (3x2) --- */
+
+.section--menu {
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.menu__title {
+  color: #ffffff;
+  font-size: 2rem;
+  margin-bottom: 30px;
+}
+
+/* Base mobile: 1 columna */
+.cookies-grid {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 25px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Tablets: 2 columnas */
+@media (min-width: 600px) {
+  .cookies-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* PC / Escritorio: 3 columnas fijas (3 arriba, 3 abajo) */
+@media (min-width: 900px) {
+  .cookies-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+}
+
+/* Contenedor principal de la tarjeta marrón */
+.cookie-card {
+  background-color: #3b2318; /* Marrón oscuro del diseño */
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+/* Área superior con fondo claro para la cookie */
+.cookie-card__image-container {
+  position: relative;
+  background-color: #f5f2eb; /* Fondo crema claro */
+  padding: 25px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 180px;
+}
+
+.cookie-card__img {
+  max-height: 130px;
+  max-width: 130px;
+  object-fit: contain;
+  filter: drop-shadow(0px 5px 8px rgba(0, 0, 0, 0.15));
+}
+
+/* Distintivo de 15% OFF en la esquina superior derecha */
+.cookie-card__badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background-color: #704832;
+  color: #f5f2eb;
+  font-size: 0.75rem;
+  font-weight: bold;
+  padding: 6px 10px;
+  border-radius: 50%;
+  text-align: center;
+  line-height: 1.1;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.15);
+}
+
+/* Contenido del texto inferior */
+.cookie-card__content {
+  padding: 20px;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-grow: 1;
+}
+
+.cookie-card__content h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+  color: #ffffff;
+}
+
+.cookie-card__desc {
+  font-size: 0.9rem;
+  color: #e0d6cd;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.cookie-card__price {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #ffffff;
+  margin-top: 4px;
+}
+
+.cookie-card__promo {
+  font-size: 0.8rem;
+  color: #d1c2b4;
+  margin: 0;
+}
+/* --- EFECTO DE AGRANDADO SUAVE AL PASAR EL CURSOR --- */
+
+/* 1. Definimos la transición en la tarjeta en su estado normal */
+.cookie-card {
+  /* Asegura que el cuadro actual tenga la propiedad de transición */
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  /* El resto de tus estilos de tarjeta (border-radius, margin, etc.) */
+}
+
+/* 2. Definimos qué pasa cuando pasamos el cursor (:hover) */
+.cookie-card:hover {
+  /* Agrandamos la tarjeta un 5% (scale 1.05) */
+  transform: scale(1.05);
+  /* Opcional: hacemos la sombra un poco más grande para más profundidad */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  /* Opcional: cambiamos el cursor para indicar que es interactivo */
+  cursor: pointer;
+}
+/* --- ESTILO MINIMALISTA Y MODERNO PARA SECCIÓN SOBRE NOSOTROS --- */
+
+.about-section__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px;
+  max-width: 500px;
+}
+
+/* Título destacado, grande y moderno */
+.about-section__title {
+  color: #ffffff;
+  font-family: 'Montserrat', 'Helvetica Neue', sans-serif;
+  font-size: 2.4rem;        /* Letras grandes */
+  font-weight: 800;         /* Extra bold para impacto visual */
+  line-height: 1.15;        /* Interlineado ajustado pero legible */
+  letter-spacing: -0.5px;   /* Toque moderno minimalista */
+  text-transform: uppercase;/* Mayúsculas opcionales (muy estilo NY) */
+  margin-bottom: 16px;
+}
+
+/* Subtítulo secundario */
+.about-section__subtitle {
+  color: #e0d6cd;           /* Tono blanco/crema suave */
+  font-size: 1rem;
+  font-weight: 300;         /* Trazo fino minimalista */
+  line-height: 1.5;
+  margin: 0;
+}
+/* Estilo para que el link mantenga el formato intacto */
+.cookie-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: block;
+  cursor: pointer;
+}
+/* --- ESTILOS DE TARJETAS Y ALINEACIÓN DE ALTURA --- */
+
+.cookie-card-link {
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  height: 100%;
+}
+
+.cookie-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.cookie-card__image-container {
+  position: relative;
+  background-color: #f6f4ee; /* fondo clarito de la imagen */
+  padding: 20px;
+}
+
+.cookie-card__content {
+  flex-grow: 1; /* Estira el fondo marrón para que todas midan lo mismo */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #3b2319; /* tu color marrón de fondo */
+  text-align: left;
+}
+/* Contenedor alineado con el texto WHCO */
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.brand-text {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #ffffff;
+  letter-spacing: 1px;
+}
+
+/* Botón Minimalista adaptado */
+.wsp-button {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.15); /* Transparente para encajar en la barra */
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+}
+
+.wsp-button .svgIcon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.3s ease;
+}
+
+.wsp-button .svgIcon path {
+  fill: #ffffff;
+}
+
+/* Estado Hover (Animación de expansión) */
+.wsp-button:hover {
+  width: 115px;
+  border-radius: 20px;
+  background-color: #25d366; /* Verde icónico de WhatsApp */
+  border-color: #25d366;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+}
+
+.wsp-button:hover .svgIcon {
+  transform: translateY(-220%);
+}
+
+.wsp-button::before {
+  position: absolute;
+  content: "WhatsApp";
+  color: #ffffff;
+  font-size: 0px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  opacity: 0;
+}
+
+.wsp-button:hover::before {
+  font-size: 12px;
+  opacity: 1;
+}
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-left: auto; /* Empuja el contenedor del logo todo lo posible hacia la derecha */
+}
+/* --- TEXTURA PAPEL MADERA FORZADA --- */
+.banner-frase {
+  position: relative !important;
+  background-image: url("https://i.pinimg.com/736x/53/8c/ef/538cef9f86452c2783fbd96966de2e82.jpg") !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+  color: #ffffff !important;
+  text-align: center;
+  padding: 60px 20px;
+  overflow: hidden;
+}
+
+/* Capa sutil de contraste */
+.banner-frase::before {
+  content: "";
+  position: absolute;
+  top: 0; 
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+}
+
+/* Asegura que el texto quede por encima del fondo */
+.banner-frase * {
+  position: relative;
+  z-index: 2;
+}
+/* --- TEXTURA PINTEREST NUEVA (SIN REPETIR) --- */
+.overlay--intro:before {
+  background-image: url("background paper.jpg") !important;
+  background-size: cover !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  filter: brightness(0.85) !important;
+}
+/* --- CORRECCIÓN DE ESTRUCTURA Y SOLAPAMIENTO --- */
+
+/* 1. La sección principal ocupa todo el ancho en bloque */
+.about-section {
+  display: flex !important;
+  flex-direction: column !important; /* Fuerza orden vertical */
+  width: 100% !important;
+  max-width: 100% !important;
+  clear: both !important;
+  margin-bottom: 40px !important;
+}
+
+/* 2. El catálogo de cookies se coloca debajo sin encimarse */
+.products-section,
+.catalog-container,
+.grid-cookies {
+  display: grid !important; /* o flex */
+  width: 100% !important;
+  clear: both !important;
+  position: relative !important;
+  top: 0 !important;
+  right: 0 !important;
+  margin-top: 30px !important;
+}
+/* --- ICONOS DE REDES SOCIALES (TRANSPARENTES + HOVER) --- */
+.social-wrapper-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.social-wrapper {
+  display: inline-flex;
+  list-style: none;
+  height: 90px;
+  padding: 20px 0;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  justify-content: center;
+  align-items: center;
+}
+
+.social-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.social-wrapper .icon {
+  position: relative;
+  /* Fondo traslúcido elegante y borde fino */
+  background: rgba(255, 255, 255, 0.2) !important;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(5px); /* Efecto vidrio esmerilado */
+  border-radius: 50%;
+  margin: 0 12px;
+  width: 48px;
+  height: 48px;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* El logo SVG se ve blanco brillante por defecto */
+.social-wrapper .icon svg {
+  fill: #ffffff !important;
+  transition: fill 0.3s ease;
+}
+
+/* Tooltip emergente al pasar el cursor */
+.social-wrapper .tooltip {
+  position: absolute;
+  top: 0;
+  font-size: 13px;
+  background: #ffffff;
+  color: #222222;
+  padding: 5px 10px;
+  border-radius: 5px;
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.social-wrapper .tooltip::before {
+  position: absolute;
+  content: "";
+  height: 8px;
+  width: 8px;
+  background: #ffffff;
+  bottom: -3px;
+  left: 50%;
+  transform: translate(-50%) rotate(45deg);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.social-wrapper .icon:hover .tooltip {
+  top: -45px;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+/* --- EFECTOS DE HOVER (COBRA COLOR CADA RED) --- */
+.social-wrapper .instagram:hover {
+  background: #e4405f !important;
+  border-color: #e4405f;
+  transform: translateY(-3px);
+}
+
+.social-wrapper .tiktok:hover {
+  background: #000000 !important;
+  border-color: #000000;
+  transform: translateY(-3px);
+}
+
+.social-wrapper .facebook:hover {
+  background: #1877f2 !important;
+  border-color: #1877f2;
+  transform: translateY(-3px);
+}
+
+.social-wrapper .youtube:hover {
+  background: #ff0000 !important;
+  border-color: #ff0000;
+  transform: translateY(-3px);
+}
+
+.social-wrapper .icon:hover .tooltip {
+  color: #ffffff;
+}
+
+.social-wrapper .instagram:hover .tooltip,
+.social-wrapper .instagram:hover .tooltip::before {
+  background: #e4405f;
+}
+
+.social-wrapper .tiktok:hover .tooltip,
+.social-wrapper .tiktok:hover .tooltip::before {
+  background: #000000;
+}
+
+.social-wrapper .facebook:hover .tooltip,
+.social-wrapper .facebook:hover .tooltip::before {
+  background: #1877f2;
+}
+
+.social-wrapper .youtube:hover .tooltip,
+.social-wrapper .youtube:hover .tooltip::before {
+  background: #ff0000;
+}
